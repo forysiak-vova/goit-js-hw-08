@@ -1,12 +1,14 @@
-const formData = { };
+import  throttle  from "lodash.throttle";
+
+const formData = {};
 const refs = {
    form: document.querySelector('.feedback-form'),
    textarea: document.querySelector('.feedback-form textarea'),
    input: document.querySelector('.feedback-form input')
 };
 
-refs.form.addEventListener('submit', onFormSubmit);
-refs.form.addEventListener('input', onFormInput);
+refs.form.addEventListener('submit', throttle(onFormSubmit, 2000));
+refs.form.addEventListener('input', throttle(onFormInput, 2000));
 
 function onFormInput(e) {
     formData[e.target.name] = e.target.value;
