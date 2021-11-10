@@ -11,10 +11,7 @@ refs.form.addEventListener('input', onFormInput);
 function onFormInput(e) {
     formData[e.target.name] = e.target.value;
    localStorage.setItem('feedback-form-state', JSON.stringify(formData));
-   const resData = new FormData(e);
-   resData.array.forEach(element => {
-      
-   });
+   
   
   
 };
@@ -24,22 +21,23 @@ function onFormSubmit(e) {
    const feedbackForm = localStorage.getItem('feedback-form-state');
    const parsForm = JSON.parse(feedbackForm);
    console.log(parsForm);
+   
 
    // console.log(localStorage.getItem('feedback-form-state'));
    e.currentTarget.reset();
    localStorage.removeItem('feedback-form-state');
 };
 
-function populateTexterea(e) {
+function populateTexterea() {
    const savedMessage = localStorage.getItem('feedback-form-state');
    const localString = JSON.parse(savedMessage);
    console.log(localString);
 
-    if (savedMessage) {
+   if (localString) {
       
-      refs.textarea.value = savedMessage;
-     refs.input.value = savedMessage;
+      refs.textarea.value = localString;
+      refs.input.value = localString;
      
    };
  
-};
+}
