@@ -1,19 +1,13 @@
-// Add imports above this line
-// import { galleryItems } from './gallery-items';
-// Change code below this line
-
-// console.log(galleryItems);
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-console.log(SimpleLightbox);
+// console.log(SimpleLightbox);
 
 
 import { galleryItems } from './gallery-items';
 
 console.log(JSON.stringify(galleryItems));
 
-// Change code below this line
 
 const galleryContainer = document.querySelector('.gallery');
 const cardsMarkup = createImgCardsMarkup(galleryItems);
@@ -39,22 +33,16 @@ function createImgCardsMarkup(galleryItems) {
    
 }
 
-console.log(galleryItems);
+// console.log(galleryItems);
 
 function ongalleryContainerClick(e) {
    const isGalleryClass = e.target.classList.contains('.gallery__image');
    if (!isGalleryClass) {
       return;
    }
-   console.log(e.target);
+   // console.log(e.target);
    
 };
-
-// const instance = basicLightbox.create(`
-// //     <img src=${original} width="800" height="600">
-// // `)
-
-// instance.show()
 
 
 const lightbox = new SimpleLightbox(".gallery a", {
