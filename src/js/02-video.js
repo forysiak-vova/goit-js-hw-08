@@ -20,7 +20,7 @@ import Player from '@vimeo/player';
 
 // const iframe = document.querySelector('iframe');
 // const player = new Player(iframe);
-// // const lisener = document.addEventListener();
+
 
 //    player.on('play', function() {
 //         console.log(player);
@@ -61,21 +61,49 @@ import Player from '@vimeo/player';
 // ===========================================================================
 
 const iframe = document.querySelector('iframe');
+// const iframe = document.getElementById('vimeo-player');
 const player = new Player(iframe);
+console.log(player);
 // const lisener = document.addEventListener();
 
-   player.on('play', function() {
-        console.log(player);
+//    player.on('play', function() {
+//        console.log(player.element);
+//        const res = player.element;
+//          localStorage.setItem("videoplayer-current-time", JSON.stringify(res));
+      
+//     });
+
+
+    player.on('play', function(date) {
+    // дані – це об’єкт, що містить властивості, характерні для цієї події
+        console.log(player.origin);
+    
+        localStorage.setItem("videoplayer-current-time", date);
+
     });
 
-    player.on('eventName', function(data) {
-    // дані – це об’єкт, що містить властивості, характерні для цієї події
-       console.log(eventName);
+     player.setCurrentTime(60.01).then(function (seconds) {
+        //  seconds = фактичний час, який шукав гравець;
+}).catch(function(error) {
+    switch (error.name) {
+        case 'RangeError':
+            // the time was less than 0 or greater than the video’s duration
+            break;
+
+        default:
+            // some other error occurred
+            break;
+    }
 });
 
-    player.getVideoTitle().then(function(title) {
-        console.log('title:', title);
-    });
+
+
+
+
+//     player.getVideoTitle().then(function(title) {
+//         console.log('title:', title);
+//     });
+
     const onPlay = function(data) {
     // data is an object containing properties specific to that event
   
@@ -83,20 +111,7 @@ const player = new Player(iframe);
 
 player.on('play', onPlay);
 
-player.setCurrentTime(30.01);
-   // .then(function (seconds) {
-    // seconds = the actual time that the player seeked to
-// }).catch(function(error) {
-//     switch (error.name) {
-//         case 'RangeError':
-//             // the time was less than 0 or greater than the video’s duration
-//             break;
-
-//         default:
-//             // some other error occurred
-//             break;
-//     }
-// });
+console.log(player.on('play', onPlay));
 
 
 
