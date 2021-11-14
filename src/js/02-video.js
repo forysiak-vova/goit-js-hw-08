@@ -11,23 +11,12 @@ player.on('timeupdate', throttle(onPlay, 1000));
      
      const resultSeconds = date.seconds;
     localStorage.setItem("videoplayer-current-time", resultSeconds);
-    //  const resultLocalStorage = localStorage.getItem("videoplayer-current-time");
-    //  console.log(resultLocalStorage);
+    
 };
 
-       player.setCurrentTime(localStorage.getItem("videoplayer-current-time")).then(function (seconds) {
-        //  seconds = фактичний час, який шукав гравець;
-
-}).catch(function(error) {
-    switch (error.name) {
-        case 'RangeError':
-            
-            break;
-
-        default:
-           
-            break;
-    }
-});
+const resultLocalStorage = localStorage.getItem("videoplayer-current-time");
+if (resultLocalStorage) {
+     player.setCurrentTime(localStorage.getItem("videoplayer-current-time"))
+ };
 
 
