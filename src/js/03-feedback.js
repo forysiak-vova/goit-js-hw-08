@@ -80,3 +80,4 @@ function populateTexterea() {
 //    e.currentTarget.reset();
 //    localStorage.removeItem(LOCALSTOREGE_KEY);
 // };
+
